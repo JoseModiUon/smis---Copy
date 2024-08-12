@@ -1,0 +1,103 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+use app\models\traits\UserTracking;
+
+/**
+ * This is the model class for table "smis.ex_student_courses".
+ *
+ * @property string $course_registration_id
+ * @property string $progress_code
+ * @property string $course_id
+ * @property string $examtype_code
+ * @property float|null $final_mark
+ * @property string|null $grade
+ * @property string|null $pay_per_course
+ * @property string|null $result_status
+ * @property string|null $last_update
+ * @property string|null $userid
+ * @property string|null $group_code
+ * @property string|null $lock_status
+ * @property int|null $level_of_study
+ * @property int|null $final
+ * @property string|null $mrksheet_id
+ * @property float|null $course_mark
+ * @property float|null $exam_mark
+ * @property string|null $remarks
+ * @property int|null $publish_status
+ */
+class ExStudentCourses extends \yii\db\ActiveRecord
+{
+    use UserTracking;
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'smis.ex_student_courses';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['course_registration_id', 'progress_code', 'course_id', 'examtype_code'], 'required'],
+            [['final_mark', 'course_mark', 'exam_mark'], 'number'],
+            [['last_update'], 'safe'],
+            [['level_of_study', 'final', 'publish_status'], 'default', 'value' => null],
+            [['level_of_study', 'final', 'publish_status'], 'integer'],
+            [['course_registration_id'], 'string', 'max' => 100],
+            [['progress_code'], 'string', 'max' => 50],
+            [['course_id', 'result_status', 'userid'], 'string', 'max' => 20],
+            [['examtype_code'], 'string', 'max' => 10],
+            [['grade', 'lock_status'], 'string', 'max' => 8],
+            [['pay_per_course'], 'string', 'max' => 1],
+            [['group_code'], 'string', 'max' => 15],
+            [['mrksheet_id'], 'string', 'max' => 60],
+            [['remarks'], 'string', 'max' => 240],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'course_registration_id' => 'Course Registration ID',
+            'progress_code' => 'Progress Code',
+            'course_id' => 'Course ID',
+            'examtype_code' => 'Examtype Code',
+            'final_mark' => 'Final Mark',
+            'grade' => 'Grade',
+            'pay_per_course' => 'Pay Per Course',
+            'result_status' => 'Result Status',
+            'last_update' => 'Last Update',
+            'userid' => 'Userid',
+            'group_code' => 'Group Code',
+            'lock_status' => 'Lock Status',
+            'level_of_study' => 'Level Of Study',
+            'final' => 'Final',
+            'mrksheet_id' => 'Mrksheet ID',
+            'course_mark' => 'Course Mark',
+            'exam_mark' => 'Exam Mark',
+            'remarks' => 'Remarks',
+            'publish_status' => 'Publish Status',
+        ];
+    }
+
+    /**
+     * Gets query for [[CrProgCurrTimetable]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTimetable()
+    {
+        return $this->hasOne(CrProgCurrTimetable::class, ['mrksheet_id' => 'mrksheet_id']);
+    }
+}

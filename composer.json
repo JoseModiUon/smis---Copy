@@ -1,0 +1,125 @@
+{
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Basic Project Template",
+    "keywords": [
+        "yii2",
+        "framework",
+        "basic",
+        "project template"
+    ],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0",
+        "yiisoft/yii2": "dev-master",
+        "yiisoft/yii2-bootstrap5": "dev-master",
+        "yiisoft/yii2-symfonymailer": "~2.0.3",
+        "vlucas/phpdotenv": "5.4.x-dev",
+        "twbs/bootstrap-icons": "dev-main",
+        "kartik-v/yii2-grid": "dev-master",
+        "kartik-v/yii2-widget-datepicker": "dev-master",
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "kartik-v/yii2-number": "dev-master",
+        "kartik-v/yii2-widget-sidenav": "dev-master",
+        "kartik-v/yii2-detail-view": "dev-master",
+        "kartik-v/yii2-editable": "dev-master",
+        "kartik-v/yii2-label-inplace": "dev-master",
+        "kartik-v/yii2-datecontrol": "dev-master",
+        "kartik-v/yii2-bootstrap5-dropdown": "1.0.x-dev",
+        "kartik-v/yii2-widget-activeform": "dev-master",
+        "components/font-awesome": "dev-master",
+        "kartik-v/yii2-widget-alert": "dev-master",
+        "kartik-v/yii2-widget-growl": "*",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "phpoffice/phpspreadsheet": "dev-master",
+        "giggsey/libphonenumber-for-php": "dev-master",
+        "yiisoft/yii2-jui": "2.0",
+        "symfony/google-mailer": "6.1",
+        "picqer/php-barcode-generator": "^2.2",
+        "masgeek/yii2-print-html": "^4.0",
+        "vakata/jstree": "3.3.12",
+        "kartik-v/yii2-mpdf": "dev-master",
+        "kartik-v/yii2-export": "@dev",
+        "kartik-v/yii2-tabs-x": "dev-master",
+        "kartik-v/yii2-date-range": "dev-master",
+        "kartik-v/dependent-dropdown": "dev-master",
+        "dompdf/dompdf": "dev-master",
+        "inquid/yii2-fpdf": "*",
+        "codedge/laravel-fpdf": "1.8.1",
+        "tamtamchik/simple-flash": "^3.0@dev",
+        "codemix/yii2-streamlog": "dev-master",
+        "kop/yii2-scroll-pager": "dev-master",
+        "stefangabos/zebra_pagination": "dev-master",
+        "kartik-v/yii2-tabs-x": "dev-master",
+        "biladina/yii2-ajaxcrud-bs4": "~3.0",
+        "yiisoft/yii2-httpclient": "^2.0@dev",
+        "guzzlehttp/guzzle": "8.0.x-dev",
+        "kartik-v/yii2-builder": "@dev"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.2.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "phpunit/phpunit": "~9.5.0",
+        "codeception/codeception": "^5.0.0 || ^4.0",
+        "codeception/lib-innerbrowser": "^3.0 || ^1.1",
+        "codeception/module-asserts": "^3.0 || ^1.1",
+        "codeception/module-yii2": "^1.1",
+        "codeception/module-filesystem": "^3.0 || ^1.1",
+        "codeception/verify": "^2.2",
+        "symfony/browser-kit": "^6.0 || >=2.7 <=4.2.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        },
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/masgeek/yii2-print-html"
+        }
+    ]
+}

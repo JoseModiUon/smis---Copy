@@ -1,0 +1,67 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\OrgCoursePrerequisite */
+
+$this->title = 'Create Course Group';
+$this->params['breadcrumbs'][] = ['label' => 'Examination Management', 'url' => ['/examinationManagement']];
+$this->params['breadcrumbs'][] = ['label' => 'Course Group', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+
+$csrf = \Yii::$app->request->csrfToken;
+?>
+<div class="org-course-prerequisite-create">
+
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8 offset-md-2 offset-lg-2">
+        <h2>Create Prog Curr Group Req Course</h2>
+        <div class="card card-primary card-outline">
+            <div class="card-body">
+                <form id="update-profile-form" method="post" action="<?=Url::to(['/examinationManagement/prog-curr-course-group/save'])?>">
+
+                    <input type="hidden" id="min-courses-taken" name="_csrf" value="<?=$csrf?>">
+
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-md-3 col-lg-3 offset-md-2 offset-lg-2 text-md-right text-lg-right col-form-label">
+                        Program curriculum Group Requirement ID
+                        </label>
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                            <input type="number" step="1" class="form-control" id="group-req-id" name="group-req-id" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-md-3 col-lg-3 offset-md-2 offset-lg-2 text-md-right text-lg-right col-form-label">
+                        Program curriculum Course ID
+                        </label>
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                            <input type="number" step="1" class="form-control" id="course-id" name="course-id" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-md-3 col-lg-3 offset-md-2 offset-lg-2 text-md-right text-lg-right col-form-label">
+                        Credit Factor
+                        </label>
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                            <input type="text" step="1" class="form-control" id="credit-factor" name="credit-factor" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-5 col-md-5 col-lg-5 offset-md-5 offset-lg-5">
+                            <button type="submit" id="btn-update-profile" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
